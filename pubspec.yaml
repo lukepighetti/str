@@ -18,6 +18,7 @@ dependencies:
   context_watch: ^3.3.0
   google_fonts: ^6.2.1
   url_launcher: ^6.3.0
+  nanoid2: ^2.0.1
 
 dev_dependencies:
   flutter_test:

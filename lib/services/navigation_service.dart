@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:str/di.dart';
-import 'package:str/dialogs/create_thing_dialog.dart';
+import 'package:str/dialogs/edit_thing_dialog.dart';
 import 'package:str/models/thing_model.dart';
 import 'package:str/screens/thing_screen.dart';
 
@@ -13,8 +13,8 @@ class NavigationService {
     _showBottomSheet(context, ThingScreen());
   }
 
-  Future<void> showCreateThingDialog() async {
-    _showDialog(context, CreateThingDialog());
+  Future<ThingModel?> showEditThingDialog({ThingModel? thing}) async {
+    return _showDialog(context, EditThingDialog(thing: thing));
   }
 
   static Future<T?> _showBottomSheet<T>(BuildContext context, Widget child) {

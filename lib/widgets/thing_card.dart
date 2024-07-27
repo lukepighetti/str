@@ -26,9 +26,10 @@ class ThingCard extends StatelessWidget {
       elevation: 10,
       color: Theme.of(context).colorScheme.surfaceContainerLowest,
       child: InkWell(
-        onTap: () {
+        onTap: () async {
           if (thing == null) {
-            di.navigation.showCreateThingDialog();
+            final t = await di.navigation.showEditThingDialog();
+            if (t != null) di.appViewModel.setThingIfEmpty(thingNumber, t);
           } else {
             di.navigation.showThingDetails(thing);
           }
@@ -36,7 +37,10 @@ class ThingCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: DefaultTextStyle(
-            style: context.textHeadline.copyWith(color: context.colorGrey2),
+            style: context.textHeadline.copyWith(
+              color:
+                  thing == null ? context.colorGrey2 : context.colorForeground,
+            ),
             child: Row(
               children: [
                 ConstrainedBox(
@@ -50,7 +54,9 @@ class ThingCard extends StatelessWidget {
                 Expanded(
                   child: Row(
                     children: [
-                      thing == null ? Text("Add an event") : Text(thing.summary),
+                      thing == null
+                          ? Text("Add an event")
+                          : Text(thing.summary),
                     ],
                   ),
                 ),

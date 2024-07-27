@@ -16,6 +16,9 @@ class AppModel with AppModelMappable {
 
   final Set<ArchivedThingModel> history;
 
+  late final hasAnyItems =
+      [...history, ...fiveThings].whereType<ThingModel>().isNotEmpty;
+
   AppModel({
     required this.thing1,
     required this.thing2,

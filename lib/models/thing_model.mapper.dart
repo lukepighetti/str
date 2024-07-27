@@ -20,6 +20,8 @@ class ThingModelMapper extends ClassMapperBase<ThingModel> {
   @override
   final String id = 'ThingModel';
 
+  static String _$id(ThingModel v) => v.id;
+  static const Field<ThingModel, String> _f$id = Field('id', _$id);
   static String _$summary(ThingModel v) => v.summary;
   static const Field<ThingModel, String> _f$summary =
       Field('summary', _$summary);
@@ -44,6 +46,7 @@ class ThingModelMapper extends ClassMapperBase<ThingModel> {
 
   @override
   final MappableFields<ThingModel> fields = const {
+    #id: _f$id,
     #summary: _f$summary,
     #outline: _f$outline,
     #resolution: _f$resolution,
@@ -55,6 +58,7 @@ class ThingModelMapper extends ClassMapperBase<ThingModel> {
 
   static ThingModel _instantiate(DecodingData data) {
     return ThingModel(
+        id: data.dec(_f$id),
         summary: data.dec(_f$summary),
         outline: data.dec(_f$outline),
         resolution: data.dec(_f$resolution),
@@ -117,7 +121,8 @@ abstract class ThingModelCopyWith<$R, $In extends ThingModel, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get aiQuestions;
   $R call(
-      {String? summary,
+      {String? id,
+      String? summary,
       String? outline,
       String? resolution,
       DateTime? created,
@@ -143,7 +148,8 @@ class _ThingModelCopyWithImpl<$R, $Out>
           (v) => call(aiQuestions: v));
   @override
   $R call(
-          {String? summary,
+          {String? id,
+          String? summary,
           String? outline,
           String? resolution,
           DateTime? created,
@@ -151,6 +157,7 @@ class _ThingModelCopyWithImpl<$R, $Out>
           List<String>? aiQuestions,
           bool? aiQuestionsLoading}) =>
       $apply(FieldCopyWithData({
+        if (id != null) #id: id,
         if (summary != null) #summary: summary,
         if (outline != null) #outline: outline,
         if (resolution != null) #resolution: resolution,
@@ -161,6 +168,7 @@ class _ThingModelCopyWithImpl<$R, $Out>
       }));
   @override
   ThingModel $make(CopyWithData data) => ThingModel(
+      id: data.get(#id, or: $value.id),
       summary: data.get(#summary, or: $value.summary),
       outline: data.get(#outline, or: $value.outline),
       resolution: data.get(#resolution, or: $value.resolution),

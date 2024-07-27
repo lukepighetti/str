@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final vm = di.appViewModel..watch(context);
+    print(vm.value);
 
     return Material(
       child: Padding(

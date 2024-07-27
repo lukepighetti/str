@@ -43,6 +43,9 @@ class AppModelMapper extends ClassMapperBase<AppModel> {
   static List<ThingModel?> _$fiveThings(AppModel v) => v.fiveThings;
   static const Field<AppModel, List<ThingModel?>> _f$fiveThings =
       Field('fiveThings', _$fiveThings, mode: FieldMode.member);
+  static bool _$hasAnyItems(AppModel v) => v.hasAnyItems;
+  static const Field<AppModel, bool> _f$hasAnyItems =
+      Field('hasAnyItems', _$hasAnyItems, mode: FieldMode.member);
 
   @override
   final MappableFields<AppModel> fields = const {
@@ -53,6 +56,7 @@ class AppModelMapper extends ClassMapperBase<AppModel> {
     #thing5: _f$thing5,
     #history: _f$history,
     #fiveThings: _f$fiveThings,
+    #hasAnyItems: _f$hasAnyItems,
   };
 
   static AppModel _instantiate(DecodingData data) {
