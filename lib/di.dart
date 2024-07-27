@@ -8,6 +8,7 @@ final di = _Dependencies();
 class _Dependencies {
   Future<void> initialize() async {
     prefs = await SharedPreferences.getInstance();
+    appViewModel.initialize();
   }
 
   final navigatorKey = GlobalKey<NavigatorState>();
