@@ -12,6 +12,7 @@ ThemeData appTheme() {
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
       ),
+      floatingLabelBehavior: FloatingLabelBehavior.always,
     ),
   );
 }

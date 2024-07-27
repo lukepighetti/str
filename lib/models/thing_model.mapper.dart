@@ -20,8 +20,15 @@ class ThingModelMapper extends ClassMapperBase<ThingModel> {
   @override
   final String id = 'ThingModel';
 
-  static String _$title(ThingModel v) => v.title;
-  static const Field<ThingModel, String> _f$title = Field('title', _$title);
+  static String _$summary(ThingModel v) => v.summary;
+  static const Field<ThingModel, String> _f$summary =
+      Field('summary', _$summary);
+  static String _$outline(ThingModel v) => v.outline;
+  static const Field<ThingModel, String> _f$outline =
+      Field('outline', _$outline);
+  static String _$resolution(ThingModel v) => v.resolution;
+  static const Field<ThingModel, String> _f$resolution =
+      Field('resolution', _$resolution);
   static DateTime _$created(ThingModel v) => v.created;
   static const Field<ThingModel, DateTime> _f$created =
       Field('created', _$created);
@@ -37,7 +44,9 @@ class ThingModelMapper extends ClassMapperBase<ThingModel> {
 
   @override
   final MappableFields<ThingModel> fields = const {
-    #title: _f$title,
+    #summary: _f$summary,
+    #outline: _f$outline,
+    #resolution: _f$resolution,
     #created: _f$created,
     #favorite: _f$favorite,
     #aiQuestions: _f$aiQuestions,
@@ -46,7 +55,9 @@ class ThingModelMapper extends ClassMapperBase<ThingModel> {
 
   static ThingModel _instantiate(DecodingData data) {
     return ThingModel(
-        title: data.dec(_f$title),
+        summary: data.dec(_f$summary),
+        outline: data.dec(_f$outline),
+        resolution: data.dec(_f$resolution),
         created: data.dec(_f$created),
         favorite: data.dec(_f$favorite),
         aiQuestions: data.dec(_f$aiQuestions),
@@ -106,7 +117,9 @@ abstract class ThingModelCopyWith<$R, $In extends ThingModel, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get aiQuestions;
   $R call(
-      {String? title,
+      {String? summary,
+      String? outline,
+      String? resolution,
       DateTime? created,
       bool? favorite,
       List<String>? aiQuestions,
@@ -130,13 +143,17 @@ class _ThingModelCopyWithImpl<$R, $Out>
           (v) => call(aiQuestions: v));
   @override
   $R call(
-          {String? title,
+          {String? summary,
+          String? outline,
+          String? resolution,
           DateTime? created,
           bool? favorite,
           List<String>? aiQuestions,
           bool? aiQuestionsLoading}) =>
       $apply(FieldCopyWithData({
-        if (title != null) #title: title,
+        if (summary != null) #summary: summary,
+        if (outline != null) #outline: outline,
+        if (resolution != null) #resolution: resolution,
         if (created != null) #created: created,
         if (favorite != null) #favorite: favorite,
         if (aiQuestions != null) #aiQuestions: aiQuestions,
@@ -144,7 +161,9 @@ class _ThingModelCopyWithImpl<$R, $Out>
       }));
   @override
   ThingModel $make(CopyWithData data) => ThingModel(
-      title: data.get(#title, or: $value.title),
+      summary: data.get(#summary, or: $value.summary),
+      outline: data.get(#outline, or: $value.outline),
+      resolution: data.get(#resolution, or: $value.resolution),
       created: data.get(#created, or: $value.created),
       favorite: data.get(#favorite, or: $value.favorite),
       aiQuestions: data.get(#aiQuestions, or: $value.aiQuestions),

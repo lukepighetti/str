@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:str/app_theme.dart';
+import 'package:str/di.dart';
 import 'package:str/models/thing_model.dart';
 
 class ThingCard extends StatelessWidget {
@@ -26,7 +27,11 @@ class ThingCard extends StatelessWidget {
       color: Theme.of(context).colorScheme.surfaceContainerLowest,
       child: InkWell(
         onTap: () {
-          // TODO
+          if (thing == null) {
+            di.navigation.showCreateThingDialog();
+          } else {
+            di.navigation.showThingDetails(thing);
+          }
         },
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -34,14 +39,18 @@ class ThingCard extends StatelessWidget {
             style: context.textHeadline.copyWith(color: context.colorGrey2),
             child: Row(
               children: [
-                Text(
-                  "$thingNumber.",
+                ConstrainedBox(
+                  constraints: BoxConstraints(minWidth: 20),
+                  child: Text(
+                    "$thingNumber.",
+                    textAlign: TextAlign.left,
+                  ),
                 ),
                 SizedBox(width: 24),
                 Expanded(
                   child: Row(
                     children: [
-                      thing == null ? Text("Add an event") : Text(thing.title),
+                      thing == null ? Text("Add an event") : Text(thing.summary),
                     ],
                   ),
                 ),

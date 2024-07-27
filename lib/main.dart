@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         theme: appTheme(),
         debugShowCheckedModeBanner: false,
         home: HomeScreen(),
+        navigatorKey: di.navigatorKey,
       ),
     );
   }
